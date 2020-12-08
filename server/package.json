@@ -1,0 +1,49 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Backend for neo4j-deepauth example",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node -r dotenv/config dist/index.js",
+    "start:dev": "nodemon -r dotenv/config src/index.js --exec babel-node",
+    "build": "yarn run clean && yarn run transpile",
+    "clean": "rimraf dist",
+    "transpile": "babel src -d dist",
+    "posterize": "node -r dotenv/config src/db/seeding/updatePosters.js --exec babel-node"
+  },
+  "author": "imkleats",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.11.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "rimraf": "^3.0.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/transform-runtime"
+    ]
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
+    "express-jwt": "^6.0.0",
+    "graphql": "^15.3.0",
+    "graphql-tag": "^2.11.0",
+    "graphql-tools": "^7.0.2",
+    "helmet": "^4.1.1",
+    "morgan": "^1.10.0",
+    "neo4j-driver": "^4.1.2",
+    "node-fetch": "^2.6.1"
+  }
+}
